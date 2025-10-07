@@ -1,0 +1,27 @@
+{
+  "name": "react-practise",
+  "version": "1.0.0",
+  "description": "react learning",
+  "scripts": {
+    "start" : "parcel index.html",
+    "build" : "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrrahulrc/react-practise.git"
+  },
+  "author": "Rahul Chaudhari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrrahulrc/react-practise/issues"
+  },
+  "homepage": "https://github.com/mrrahulrc/react-practise#readme",
+  "devDependencies": {
+    "parcel": "^2.16.0"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}
