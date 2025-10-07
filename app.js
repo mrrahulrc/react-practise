@@ -1,42 +1,75 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
- 
-const heading = React.createElement(
-  "h1",
-  {
-    id: "heading",
-  },
-  "react working "
-);
 
-console.log(heading);
-// this is jsx element
-const jsxHeading = <h1>react working via jsx</h1>
-
-// this is functional component
-const Header = () => <div>this is Header</div>
-
-const Footer = () => <div>this is footer</div>
-
-const Page = () => {
+const Header = () => {
   return (
-    <>
-      <Header />
-      <div>
-        Page content goes here
+    <div className="header">
+      <div className="logo-container">
+        <img className="logo"
+        src="https://as1.ftcdn.net/jpg/08/29/90/88/1000_F_829908823_kYsRKdQcIaYEAhHRAZTIXuSKvuVPif8w.webp"></img>
       </div>
-      <Footer />
-    </>
+      <div className="nav-items">
+        <ul>
+          <li>Home</li>
+          <li>About us</li>
+          <li>Contact us</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
   )
 }
 
-const div = React.createElement("div", {}, "this is div");
+const RestaurantCard = () => {
+  return (
+    <div className="res-card" >
+      <img  
+        className="res-img"
+        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/09ba66f3e7ea27ddb8f23e97e7789b95"></img>
+      <h3>Unnati Restaurant</h3>
+      <h4>biryani, north indian</h4>
+      <h4>4.4 stars</h4>
+      <h4>30 min delievery</h4>
+    </div>
+  )
+}
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(jsxHeading);
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="search">Search</div>
+      <div className="res-container">
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+      </div>
+    </div>
+  )
+}
 
-root.render(<Page/>)
+const AppLayout = () => {
+  return (
+    <div className="app">
+      <Header />
+      <Body />
+    </div>
+  )
+}
 
-// if you want to add 2 childs, pass array in react createElement
-// pass as many childs as you want
-// React.createElement("element type", {}, []);
+ReactDOM.createRoot(document.getElementById("root")).render(<AppLayout />)

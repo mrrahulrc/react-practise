@@ -2,6 +2,52 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: black;
-    color: azure;
+    background-color: rgb(255, 255, 255);
+    color: rgb(2, 2, 2);
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid red;
+}
+
+.logo{
+    width: 150px;
+}
+
+.nav-items > ul {
+    display: flex;
+}
+
+.nav-items > ul > li {
+    padding: 10px;
+    margin: 10px;
+    list-style-type: none;
+    font-size: 24px;
+}
+
+.res-card{
+    width: 200px;
+    height: 300px;
+    padding: 4px;
+    margin: 8px;
+}
+
+.res-card:hover{
+    border: 1px solid rgb(106, 75, 114);
+    cursor: pointer;
+}
+
+.search{
+    padding: 20px;
+}
+
+.res-img{
+    width: 100%;
+}
+
+.res-container{
+    display: flex;
+    flex-wrap: wrap;
 }
