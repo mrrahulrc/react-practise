@@ -1,6 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
 const data = {
   cards: [
       {
@@ -881,85 +878,12 @@ const data = {
     ]
 }
 
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo"
-        src="https://as1.ftcdn.net/jpg/08/29/90/88/1000_F_829908823_kYsRKdQcIaYEAhHRAZTIXuSKvuVPif8w.webp"></img>
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About us</li>
-          <li>Contact us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  )
-}
+export default data;
 
-const RestaurantCard = (props) => {
+// 2 types of exports
+// named export
+// export {} 
+// it exports an object
 
-  const {cloudinaryImageId, resName, cuisine, avgRatingString} = props
-
-  return (
-    <div className="res-card" >
-      <img  
-        className="res-img"
-        src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`}
-        ></img>
-      <h3>{resName}</h3>
-      <h4>{cuisine}</h4>
-      <h4>{avgRatingString} stars</h4>
-      <h4>30 min delievery</h4>
-    </div>
-  )
-}
-
-const Body = () => {
-
-  console.log(data)
-  console.log(data.cards[0].card.card.gridElements.infoWithStyle.restaurants)
-  const liveData = data.cards[0].card.card.gridElements.infoWithStyle.restaurants;
-
-  return (
-    <div className="body">
-      <div className="search">Search</div>
-      <div className="res-container">
-        {/* <RestaurantCard 
-          resName="Unnati Restaurant"
-          cuisine="biryani, north indian"
-          cloudinaryImageId=""
-        />
-        <RestaurantCard 
-          resName="Supreme Restaurant"
-          cuisine="Veg Kolhapuri"
-          cloudinaryImageId=""
-        /> */}
-
-        {liveData.map((ele,ind) => {
-          return <RestaurantCard 
-          key={ele.info.id} 
-          resName={ele.info.name} 
-          cuisine={ele.info.cuisines.join(",")}
-          cloudinaryImageId={ele.info.cloudinaryImageId}
-          avgRatingString={ele.info.avgRatingString}
-          />
-        })}
-      </div>
-    </div>
-  )
-}
-
-const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  )
-}
-
-ReactDOM.createRoot(document.getElementById("root")).render(<AppLayout />)
+// default export
+// export default <what_you_want_to_export>
