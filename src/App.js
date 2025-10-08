@@ -8,7 +8,7 @@ const AppLayout = () => {
       <Header />
       <Body />
     </div>
-  )
-}
+  );
+};
 
-ReactDOM.createRoot(document.getElementById("root")).render(<AppLayout />)
+ReactDOM.createRoot(document.getElementById("root")).render(<AppLayout />);
