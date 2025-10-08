@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import ShimmerLoader from "./ShimmerDiv";
+import { Link } from "react-router";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -70,14 +71,16 @@ const Body = () => {
       <div className="res-container">
         {filteredRestaurantList.map((ele) => {
           return (
-            <RestaurantCard
-              key={ele.info.id}
-              resName={ele.info.name}
-              cuisine={ele.info.cuisines.join(", ")}
-              cloudinaryImageId={ele.info.cloudinaryImageId}
-              avgRatingString={ele.info.avgRatingString}
-              deliveryTime={ele.info.sla.deliveryTime}
-            />
+            <Link key={ele.info.id} to={`/restaurants/${ele.info.id}`}>
+              <RestaurantCard
+                key={ele.info.id}
+                resName={ele.info.name}
+                cuisine={ele.info.cuisines.join(", ")}
+                cloudinaryImageId={ele.info.cloudinaryImageId}
+                avgRatingString={ele.info.avgRatingString}
+                deliveryTime={ele.info.sla.deliveryTime}
+              />
+            </Link>
           );
         })}
       </div>
