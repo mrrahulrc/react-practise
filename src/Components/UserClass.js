@@ -25,7 +25,7 @@ class UserClass extends React.Component {
     });
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevStates) {
     console.log("gets called after the new state is rendered");
   }
 

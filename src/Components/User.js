@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const User = ({ name, location }) => {
   const [count] = useState(0);
   const [count2] = useState(1);
+
+  useEffect(() => {
+    return () => {
+      // clear any interval that are started
+      // it will be called on component ummounted
+    };
+  }, [count]);
 
   return (
     <div className="user-card">
