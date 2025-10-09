@@ -2,30 +2,19 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import ShimmerLoader from "./ShimmerDiv";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import useRestaurantList from "../utils/useRestaurantList";
 
 const Body = () => {
-  const [restaurantList, setRestaurantList] = useState([]);
-  const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const [restaurantList, filteredRestaurantList] = useRestaurantList();
 
-  const fetchData = async () => {
-    let data = await fetch(
-      "https://raw.githubusercontent.com/namastedev/namaste-react/refs/heads/main/swiggy-api"
-    );
-    let json = await data.json();
-    console.log(json);
+  const onlineStatus = useOnlineStatus();
 
-    setRestaurantList(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurantList(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
+  if (onlineStatus === false) {
+    return <h1>looks like you are offline, check your internet connection</h1>;
+  }
 
   return restaurantList.length === 0 ? (
     <ShimmerLoader />

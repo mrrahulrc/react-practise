@@ -1,28 +1,9 @@
-import { useEffect, useState } from "react";
 import ShimmerLoader from "./ShimmerDiv";
-import { CDN_URL, RESTAURANT_MENU_DETAILS } from "../utils/constants";
-import { useParams } from "react-router";
+import { CDN_URL } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
-  useEffect(() => {
-    fetchRestaurantMenu();
-  }, []);
-
-  // use this to fetch query params
-  const params = useParams();
-
-  const fetchRestaurantMenu = async () => {
-    const { resId } = params;
-    console.log(resId);
-
-    let menu = await fetch(
-      `${RESTAURANT_MENU_DETAILS}${resId}&catalog_qa=undefined&query=Burger&submitAction=ENTER`
-    );
-    let menuJson = await menu.json();
-
-    setResInfo(menuJson?.data);
-  };
+  const resInfo = useRestaurantMenu();
 
   if (resInfo === null) return <ShimmerLoader />;
 
