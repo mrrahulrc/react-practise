@@ -26,7 +26,7 @@ class About extends Component {
     return (
       <div>
         <h1>About us page</h1>
-        <UserClass name="rahul chaudhari class component" location="surat" />
+        <UserClass name="rahul chaudhari " location="surat" />
       </div>
     );
   }
