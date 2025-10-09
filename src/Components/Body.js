@@ -1,14 +1,15 @@
 import RestaurantCard from "./RestaurantCard";
-import { useEffect, useState } from "react";
 import ShimmerLoader from "./ShimmerDiv";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurantList from "../utils/useRestaurantList";
+import { useState } from "react";
 
 const Body = () => {
   const [searchValue, setSearchValue] = useState("");
 
-  const [restaurantList, filteredRestaurantList] = useRestaurantList();
+  const [restaurantList, filteredRestaurantList, setFilteredRestaurantList] =
+    useRestaurantList();
 
   const onlineStatus = useOnlineStatus();
 
@@ -51,7 +52,7 @@ const Body = () => {
               (ele) => ele.info.avgRating > 4.1
             );
             console.log(restaurantList);
-            setRestaurantList(filteredList);
+            setFilteredRestaurantList(filteredList);
           }}
         >
           Top Rated Restaurant

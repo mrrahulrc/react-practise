@@ -22,7 +22,7 @@ const useRestaurantList = () => {
     );
   };
 
-  return [restaurantList, filteredRestaurantList];
+  return [restaurantList, filteredRestaurantList, setFilteredRestaurantList];
 };
 
 export default useRestaurantList;
