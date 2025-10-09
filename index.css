@@ -1,4 +1,6 @@
- *{
+@import "tailwindcss";
+/* 
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -103,4 +105,4 @@ li{
 .user-card{
     padding: 10px;
     border: 1px solid black;
-}
+} */

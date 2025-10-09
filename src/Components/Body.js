@@ -21,9 +21,10 @@ const Body = () => {
     <ShimmerLoader />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex">
+        <div className="search mx-4 px-4 ">
           <input
+            className="border-2 border-solid border-black"
             type="text"
             value={searchValue}
             onChange={(e) => {
@@ -31,7 +32,7 @@ const Body = () => {
             }}
           />
           <button
-            className="btn-search"
+            className="btn-search px-4 py-2 bg-green-100 m-4 cursor-pointer rounded-lg"
             onClick={() => {
               console.log(searchValue);
               console.log(restaurantList[0].info.name);
@@ -46,7 +47,7 @@ const Body = () => {
           </button>
         </div>
         <button
-          className="filter-btn"
+          className="filter-btn cursor-pointer"
           onClick={() => {
             const filteredList = restaurantList.filter(
               (ele) => ele.info.avgRating > 4.1
@@ -58,7 +59,7 @@ const Body = () => {
           Top Rated Restaurant
         </button>
       </div>
-      <div className="res-container">
+      <div className="res-container flex flex-wrap items-center ">
         {filteredRestaurantList.map((ele) => {
           return (
             <Link key={ele.info.id} to={`/restaurants/${ele.info.id}`}>
