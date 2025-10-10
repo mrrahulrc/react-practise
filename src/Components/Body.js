@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import ShimmerLoader from "./ShimmerDiv";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurantList from "../utils/useRestaurantList";
@@ -12,6 +12,8 @@ const Body = () => {
     useRestaurantList();
 
   const onlineStatus = useOnlineStatus();
+
+  const RestaurantCardWithPromoted = withPromotedLabel(RestaurantCard);
 
   if (onlineStatus === false) {
     return <h1>looks like you are offline, check your internet connection</h1>;
@@ -60,17 +62,28 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container flex flex-wrap items-center ">
-        {filteredRestaurantList.map((ele) => {
+        {filteredRestaurantList.map((ele, ind) => {
           return (
             <Link key={ele.info.id} to={`/restaurants/${ele.info.id}`}>
-              <RestaurantCard
-                key={ele.info.id}
-                resName={ele.info.name}
-                cuisine={ele.info.cuisines.join(", ")}
-                cloudinaryImageId={ele.info.cloudinaryImageId}
-                avgRatingString={ele.info.avgRatingString}
-                deliveryTime={ele.info.sla.deliveryTime}
-              />
+              {ind % 2 == 0 ? (
+                <RestaurantCardWithPromoted
+                  key={ele.info.id}
+                  resName={ele.info.name}
+                  cuisine={ele.info.cuisines.join(", ")}
+                  cloudinaryImageId={ele.info.cloudinaryImageId}
+                  avgRatingString={ele.info.avgRatingString}
+                  deliveryTime={ele.info.sla.deliveryTime}
+                />
+              ) : (
+                <RestaurantCard
+                  key={ele.info.id}
+                  resName={ele.info.name}
+                  cuisine={ele.info.cuisines.join(", ")}
+                  cloudinaryImageId={ele.info.cloudinaryImageId}
+                  avgRatingString={ele.info.avgRatingString}
+                  deliveryTime={ele.info.sla.deliveryTime}
+                />
+              )}
             </Link>
           );
         })}
