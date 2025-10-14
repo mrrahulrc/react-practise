@@ -3,7 +3,8 @@ import ShimmerLoader from "./ShimmerDiv";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurantList from "../utils/useRestaurantList";
 import { Link } from "react-router";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -12,6 +13,7 @@ const Body = () => {
     useRestaurantList();
 
   const onlineStatus = useOnlineStatus();
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   const RestaurantCardWithPromoted = withPromotedLabel(RestaurantCard);
 
@@ -60,6 +62,15 @@ const Body = () => {
         >
           Top Rated Restaurant
         </button>
+
+        <div className="filter-btn cursor-pointer">
+          <label>Username</label>
+          <input
+            className="border border-black"
+            onChange={(e) => setUserName(e.target.value)}
+            value={loggedInUser}
+          />
+        </div>
       </div>
       <div className="res-container flex flex-wrap items-center ">
         {filteredRestaurantList.map((ele, ind) => {

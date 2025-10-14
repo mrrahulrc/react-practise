@@ -25,14 +25,10 @@ const AppLayout = () => {
 
   return (
     // if we use context outside it will have the default user from the static UserContext
-    <UserContext.Provider value={{ loggedInUser: userName }}>
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
       <div className="app">
-        {/* header component will have new user */}
-        <UserContext.Provider value={{ loggedInUser: "new user" }}>
-          <Header />
-        </UserContext.Provider>
+        <Header />
         {/* render the partial section from the router config */}
-        {/* outlet will have the username from the state */}
         <Outlet />
       </div>
     </UserContext.Provider>
