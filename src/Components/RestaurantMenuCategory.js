@@ -16,7 +16,6 @@ const RestaurantMenuCategory = (props) => {
         <span
           className="cursor-pointer"
           onClick={() => {
-            // setDescriptionVisible(!isDescriptionFisible);
             setShowIndex(showIndex ? null : index);
           }}
         >
@@ -25,12 +24,6 @@ const RestaurantMenuCategory = (props) => {
       </div>
       <div className={"hey py-3 " + (showIndex ? "block" : "hidden")}>
         <ItemList itemCards={props?.title?.card?.card?.itemCards} />
-        {/* {props?.title?.card?.card?.itemCards.map((ele) => (
-          <div key={ele.card.info.id} className="">
-            <span>{ele.card.info.name}</span>
-            <span>({ele.card.info.price})</span>
-          </div>
-        ))} */}
       </div>
     </div>
   );
