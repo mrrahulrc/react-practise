@@ -2,9 +2,10 @@ import { useState } from "react";
 import ItemList from "./ItemList";
 
 const RestaurantMenuCategory = (props) => {
+  const { showIndex, setShowIndex, index } = props;
+
   const [isDescriptionFisible, setDescriptionVisible] = useState(false);
 
-  console.log(props);
   return (
     <div className="w-6/12 mx-auto">
       <div className="my-4 p-2 font-bold bg-gray-50 shadow-lg flex justify-between">
@@ -15,15 +16,14 @@ const RestaurantMenuCategory = (props) => {
         <span
           className="cursor-pointer"
           onClick={() => {
-            setDescriptionVisible(!isDescriptionFisible);
+            // setDescriptionVisible(!isDescriptionFisible);
+            setShowIndex(index);
           }}
         >
-          {isDescriptionFisible ? "Hide " : "Show"} description
+          {showIndex ? "Hide " : "Show"} description
         </span>
       </div>
-      <div
-        className={"hey py-3 " + (isDescriptionFisible ? "block" : "hidden")}
-      >
+      <div className={"hey py-3 " + (showIndex ? "block" : "hidden")}>
         <ItemList itemCards={props?.title?.card?.card?.itemCards} />
         {/* {props?.title?.card?.card?.itemCards.map((ele) => (
           <div key={ele.card.info.id} className="">
