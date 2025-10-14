@@ -9,8 +9,6 @@ const RestaurantMenu = () => {
 
   return (
     <div className="menu">
-      <h1> Name of the restaurant {name}</h1>
-      <h2>Menu Items</h2>
       <ul className="menu-item-container text-center">
         {resInfo.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards
           .filter(

@@ -2,7 +2,7 @@ import { useState } from "react";
 import ItemList from "./ItemList";
 
 const RestaurantMenuCategory = (props) => {
-  const [isDescriptionFisible, setDescriptionVisible] = useState(true);
+  const [isDescriptionFisible, setDescriptionVisible] = useState(false);
 
   console.log(props);
   return (
