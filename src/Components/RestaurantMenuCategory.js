@@ -17,7 +17,7 @@ const RestaurantMenuCategory = (props) => {
           className="cursor-pointer"
           onClick={() => {
             // setDescriptionVisible(!isDescriptionFisible);
-            setShowIndex(index);
+            setShowIndex(showIndex ? null : index);
           }}
         >
           {showIndex ? "Hide " : "Show"} description
