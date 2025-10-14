@@ -7,17 +7,35 @@ import Error from "./Components/Error";
 import RestaurantMenu from "./Components/RestaurantMenu";
 // import Grocery from "./Components/Grocery";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
+import UserContext from "./utils/UserContext";
 
 const Grocery = lazy(() => import("./Components/Grocery"));
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState("default from state");
+
+  useEffect(() => {
+    // make api call for authentication
+    setTimeout(() => {
+      const name = "Rahul chaudhari";
+      setUserName(name);
+    }, 2000);
+  }, []);
+
   return (
-    <div className="app">
-      <Header />
-      {/* render the partial section from the router config */}
-      <Outlet />
-    </div>
+    // if we use context outside it will have the default user from the static UserContext
+    <UserContext.Provider value={{ loggedInUser: userName }}>
+      <div className="app">
+        {/* header component will have new user */}
+        <UserContext.Provider value={{ loggedInUser: "new user" }}>
+          <Header />
+        </UserContext.Provider>
+        {/* render the partial section from the router config */}
+        {/* outlet will have the username from the state */}
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 

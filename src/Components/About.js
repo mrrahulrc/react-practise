@@ -30,7 +30,7 @@ class About extends Component {
           <UserContext.Consumer>
             {(data) => {
               console.log(data);
-              return <h2>{data.loggedInUser}</h2>;
+              return <>{data.loggedInUser}</>;
             }}
           </UserContext.Consumer>
         </h2>
